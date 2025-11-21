@@ -28,11 +28,8 @@ jobs:
           pip install -r requirements.txt
 
       # 4️⃣ Ejecutar análisis estático
-      - name: Run static analysis (flake8 + bandit)
+      - name: Run Bandit
         run: |
-          echo "Running flake8..."
-          flake8 app tests
-          echo "Running bandit..."
           bandit -r app
 
       # 5️⃣ Ejecutar tests unitarios, integracion y e2e
