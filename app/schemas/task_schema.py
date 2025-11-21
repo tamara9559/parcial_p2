@@ -2,18 +2,15 @@ from pydantic import BaseModel
 
 class TaskCreate(BaseModel):
     title: str
-    description: str
-    user_id: int
+    description: str | None = None
 
-class TaskUpdate(BaseModel):
-    is_completed: bool
-
-class TaskOut(BaseModel):
+class TaskResponse(BaseModel):
     id: int
     title: str
-    description: str
+    description: str | None
     is_completed: bool
     user_id: int
 
     class Config:
         orm_mode = True
+

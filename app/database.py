@@ -13,6 +13,7 @@ def create_engine_from_env():
     return engine
 
 engine = create_engine_from_env()
+
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 
 def get_db():
@@ -21,6 +22,7 @@ def get_db():
         yield db
     finally:
         db.close()
+
 
 
 

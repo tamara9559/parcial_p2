@@ -1,30 +1,17 @@
-from sqlalchemy.orm import Session
 from app.models.user import User
 
 class UserService:
 
     @staticmethod
-    def create_user(db: Session, name: str, email: str):
-        new_user = User(name=name, email=email)
-        db.add(new_user)
+    def create_user(db, name: str, email: str):
+        user = User(name=name, email=email)
+        db.add(user)
         db.commit()
-        db.refresh(new_user)
-        return new_user
+        db.refresh(user)
+        return user
 
     @staticmethod
-    def get_user(db: Session, user_id: int):
+    def get_user(db, user_id: int):
         return db.query(User).filter(User.id == user_id).first()
 
-    @staticmethod
-    def get_all_users(db: Session):
-        return db.query(User).all()
-
-    @staticmethod
-    def delete_user(db: Session, user_id: int):
-        user = db.query(User).filter(User.id == user_id).first()
-        if not user:
-            return False
-        db.delete(user)
-        db.commit()
-        return True
 
