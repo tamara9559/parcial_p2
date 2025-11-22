@@ -43,6 +43,6 @@ jobs:
       # 6️⃣ Mensaje final si todo pasa
       - name: Success message
         if: success()
-        run: echo "ok: nota 5,0"
+        run: echo "ok; nota 5,0"
 
 
